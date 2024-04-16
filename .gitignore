@@ -1,15 +1,18 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
+/ai-ta/node_modules
+/ai-ta/.pnp
+/ai-ta/.pnp.js
+
+/ai-ta-backend/node_modules
+/ai-ta-backend/.env
 
 # testing
-/coverage
+/ai-ta/coverage
 
 # production
-/build
+/ai-ta/build
 
 # misc
 .DS_Store

@@ -1,0 +1,20 @@
+.agent-box {
+    border: 2px solid grey;
+    border-radius: 10px;
+    padding: 10px;
+    height: 300px;
+    overflow-y: auto;
+    margin-left: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    flex-grow: 1;
+}
+
+.agent-message {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: black;
+}

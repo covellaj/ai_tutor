@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React from 'react';
+import ChatBox from './components/ChatBox';
+import SystemBox from './components/SystemBox';
+import AgentBox from './components/AgentBox';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        AI Tutor
       </header>
+      <main className="main-layout">
+        <div className="left-panel">
+          <ChatBox />
+        </div>
+        <div className="right-panel">
+          <SystemBox />
+          <AgentBox />
+        </div>
+      </main>
     </div>
   );
 }

@@ -1,38 +1,61 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: var(--text-color);
+  background: var(--background-color);
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: var(--header-background);
+  color: var(--header-text);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.main-layout {
+  display: flex;
+  height: 600px; /* Adjust height as necessary */
+}
+
+.left-panel, .right-panel {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.left-panel {
+  max-width: 50%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.right-panel {
+  max-width: 50%;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Light and dark mode variables */
+:root {
+  --background-color: #fff;
+  --text-color: #333;
+  --header-background: #0066cc;
+  --header-text: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #333;
+    --text-color: #fff;
+    --header-background: #0055a4;
+    --header-text: #ccc;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+
+/* Component specific styles */
+.component {
+  border: 2px solid grey;
+  border-radius: 10px;
+  padding: 10px;
+  overflow-y: auto;
 }

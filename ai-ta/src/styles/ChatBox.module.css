@@ -1,0 +1,30 @@
+.chat-box {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid grey;
+    border-radius: 10px;
+    padding: 10px;
+    height: 300px;
+    width: 300px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    flex-grow: 1;
+}
+
+.message-area {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.message {
+    background-color: lightgrey;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 5px;
+    width: fit-content;
+}
+
+.input-box {
+    height: 50px;
+    resize: none;
+}
