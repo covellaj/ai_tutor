@@ -1,39 +1,35 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import '../styles/ChatBox.module.css';  // Ensure to create this CSS module for styling
 
-const ChatBox = () => {
-    const [messages, setMessages] = useState([]);  // To store messages
-    const [inputText, setInputText] = useState('');  // To handle the text input
+const ChatBox = ({ onUpdateAgents }) => {
+    const [message, setMessage] = useState('');
+    const [conversation, setConversation] = useState([]);
 
-    // Function to handle input changes
-    const handleInputChange = (event) => {
-        setInputText(event.target.value);
-    };
-
-    // Function to handle sending messages
-    const handleSendMessage = (event) => {
-        if (event.key === 'Enter' && !event.shiftKey) {
-            event.preventDefault();
-            if (inputText.trim()) {
-                setMessages([...messages, inputText]);
-                setInputText('');
-            }
+    const sendMessage = async () => {
+        if (message.trim() !== '') {
+            setConversation([...conversation, { text: message, sender: 'user' }]);
+            const response = await axios.post('http://localhost:3001/chat', { message });
+            setConversation([...conversation, { text: message, sender: 'user' }, { text: response.data.message, sender: 'ai' }]);
+            onUpdateAgents(response.data.message); // Update AgentBox
+            setMessage('');
         }
     };
 
     return (
         <div className="chat-box">
-            <div className="message-area">
-                {messages.map((msg, index) => (
-                    <div key={index} className="message">{msg}</div>
+            <div className="messages">
+                {conversation.map((msg, index) => (
+                    <p key={index} className={msg.sender === 'user' ? 'user-message' : 'ai-message'}>
+                        {msg.text}
+                    </p>
                 ))}
             </div>
-            <textarea
-                className="input-box"
-                value={inputText}
-                onChange={handleInputChange}
-                onKeyDown={handleSendMessage}
-                placeholder="Type your message here..."
+            <input
+                type="text"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
             />
         </div>
     );

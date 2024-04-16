@@ -1,45 +1,35 @@
-const axios = require('axios');
+import OpenAI from "openai";
 
-// Original function for basic requests
+const openai = new OpenAI({apiKey: 'deleted for git push'}); // environment variable load not working; need to fix.
+
+// Function to call OpenAI with basic prompt
 const callOpenAI = async (prompt) => {
   try {
-    const response = await axios.post('https://api.openai.com/v1/completions', {
-      model: "text-davinci-002",
-      prompt: prompt,
+    const completion = await openai.chat.completions.create({
+      messages: [{role: "system", content: ""}, {role: "user", content: prompt}],
+      model: "gpt-3.5-turbo", // Adjust the model as necessary
       max_tokens: 150
-    }, {
-      headers: {
-        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-        'Content-Type': 'application/json'
-      }
     });
-    return response.data.choices[0].text.trim();
+    return completion.choices[0].message.content;
   } catch (error) {
-    console.error('Error calling OpenAI API:', error);
+    console.error('Error calling OpenAI:', error);
     return null;
   }
 };
 
-// New function for Chain of Thought processing
+// Function for Chain of Thought processing
 const callOpenAIChainOfThought = async (prompt) => {
   const detailedPrompt = `Let's think step by step to solve this: ${prompt}`;
   try {
-    const response = await axios.post('https://api.openai.com/v1/completions', {
-      model: "text-davinci-002",
-      prompt: detailedPrompt,
-      max_tokens: 250,
-      temperature: 0.5  // This parameter helps in controlling the randomness of the output
-    }, {
-      headers: {
-        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-        'Content-Type': 'application/json'
-      }
+    const completion = await openai.chat.completions.create({
+      messages: [{role: "system", content: ""}, {role: "user", content: detailedPrompt}],
+      model: "gpt-3.5-turbo",
     });
-    return response.data.choices[0].text.trim();
+    return completion.choices[0].message.content;
   } catch (error) {
-    console.error('Error calling OpenAI API with Chain of Thought:', error);
+    console.error('Error with Chain of Thought call:', error);
     return null;
   }
 };
 
-module.exports = { callOpenAI, callOpenAIChainOfThought };
+export { callOpenAI, callOpenAIChainOfThought };

@@ -1,14 +1,20 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const passport = require('passport');
-const OAuth2Strategy = require('passport-oauth2').Strategy;
+import dotenv from 'dotenv';
+dotenv.config(); // Doesn't seem to be working; will put in manual API Key for OpenAI for now but not in production!!
 
-const { callOpenAI } = require('./openai_utils');
+import express from 'express';
+import bodyParser from 'body-parser';
+import passport from 'passport';
+// import OAuth2Strategy from 'passport-oauth2'.Strategy; Need to Look at this for authentication!!
+import cors from 'cors';
+import { callOpenAI, callOpenAIChainOfThought } from './openai_utils.js';
 // Create an instance of express to serve our endpoints
 const app = express();
 
 // Use bodyParser to parse JSON bodies into JS objects
 app.use(bodyParser.json());
+
+// CORS for Server Errors?
+app.use(cors());
 
 /*
 // Passport configuration

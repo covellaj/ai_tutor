@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ChatBox from './components/ChatBox';
 import SystemBox from './components/SystemBox';
 import AgentBox from './components/AgentBox';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [agentMessages, setAgentMessages] = useState([]);
+
+  const handleUpdateAgents = (message) => {
+      setAgentMessages([...agentMessages, message]);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -12,11 +18,11 @@ function App() {
       </header>
       <main className="main-layout">
         <div className="left-panel">
-          <ChatBox />
+          <ChatBox onUpdateAgents={handleUpdateAgents}/>
         </div>
         <div className="right-panel">
           <SystemBox />
-          <AgentBox />
+          <AgentBox agentMessages={agentMessages}/>
         </div>
       </main>
     </div>

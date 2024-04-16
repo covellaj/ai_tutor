@@ -1,4 +1,4 @@
-const passport = require('passport');
+import passport from 'passport';
 const OAuth2Strategy = require('passport-oauth2').Strategy;
 
 passport.use(new OAuth2Strategy({

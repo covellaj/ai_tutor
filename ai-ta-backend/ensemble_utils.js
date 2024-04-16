@@ -1,4 +1,4 @@
-const { callOpenAIChainOfThought } = require('./openai_utils');
+import callOpenAIChainOfThought from './openai_utils';
 
 // Simulate an ensemble of different thought processes
 const ensembleThoughts = async (prompt) => {
@@ -17,4 +17,4 @@ const judgeBestResponse = (responses) => {
   return responses.sort((a, b) => b.length - a.length)[0];  // Example: Select the longest response
 };
 
-module.exports = { ensembleThoughts, judgeBestResponse };
+export { ensembleThoughts, judgeBestResponse };

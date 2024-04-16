@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 const callWolframAlpha = async (query) => {
   const url = `http://api.wolframalpha.com/v2/query?input=${encodeURIComponent(query)}&appid=${process.env.WOLFRAM_API_KEY}&output=json`;
@@ -14,4 +14,4 @@ const callWolframAlpha = async (query) => {
   }
 };
 
-module.exports = { callWolframAlpha };
+export { callWolframAlpha };
