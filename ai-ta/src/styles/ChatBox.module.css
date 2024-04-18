@@ -4,27 +4,50 @@
     border: 2px solid grey;
     border-radius: 10px;
     padding: 10px;
-    height: 300px;
-    width: 300px;
-    background-color: var(--background-color);
+    height: 100%; /* Full height to fill the container */
+    background-color: #ffb71b; /*var(--background-color);*/
     color: var(--text-color);
     flex-grow: 1;
+    overflow-y: auto;
+    margin: 2px;
+    margin-right: 0px;
 }
 
 .message-area {
     flex-grow: 1;
-    overflow-y: auto;
+    overflow-y: auto; /* Allows scrolling within message area only */
 }
 
-.message {
-    background-color: lightgrey;
+.user-message {
+    background-color: #f0f0f0;
     border-radius: 10px;
-    padding: 5px;
-    margin-bottom: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
     width: fit-content;
+    align-self: left;
+}
+
+.ai-message {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: fit-content;
+    align-self: right;
 }
 
 .input-box {
-    height: 50px;
-    resize: none;
+    display: flex;
+    min-height: 50px; /* Initial height */
+    max-height: 150px; /* Maximum height before scrolling */
+    width: 65%; /* Adjust based on your design preference */
+    overflow-y: auto; /* Allows internal scrolling */
+    align-items: flex-end; /* Aligns content to the bottom */
+    margin-top: auto; /* Pushes to the bottom */
+    margin-bottom: 2vh;
+    z-index: 2; /* Ensures it covers messages if needed */
+    background-color: white; /* Matches the chat box */
+    border: grey;
+    border-radius: 10px;
+    align-self: center;
 }

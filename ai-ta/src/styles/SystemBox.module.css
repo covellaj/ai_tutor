@@ -1,19 +1,24 @@
 .system-box {
+    display: flex;
+    flex-direction: column;
     border: 2px solid grey;
     border-radius: 10px;
     padding: 10px;
-    height: 300px;
-    overflow-y: auto;
-    margin-left: 20px;
-    background-color: var(--background-color);
+    height: 10%; /* This is a basis, not a maximum */
+    overflow-y: auto; /* Enable scrolling */
+    margin-left: 1vw;
+    margin: 2px;
+    background-color: #bec0c2;
     color: var(--text-color);
-    flex-grow: 1;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
 }
 
 .system-message {
     background-color: #f0f0f0;
     border-radius: 10px;
-    padding: 5px;
-    margin-bottom: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
     font-size: 0.9rem;
+    width: fit-content;
 }

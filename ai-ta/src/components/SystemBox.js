@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/SystemBox.module.css'; // Make sure to create this CSS module
+import styles from '../styles/SystemBox.module.css'; // Make sure to create this CSS module
 
 const SystemBox = () => {
     const [systemMessages, setSystemMessages] = useState([]);
@@ -13,9 +13,9 @@ const SystemBox = () => {
     }, []);
 
     return (
-        <div className="system-box">
+        <div className={styles["system-box"]}>
             {systemMessages.map((msg, index) => (
-                <div key={index} className="system-message">{msg}</div>
+                <div key={index} className={styles["system-message"]}>{msg}</div>
             ))}
         </div>
     );

@@ -12,9 +12,10 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        AI Tutor
+    <div className="app">
+      <header className="app-header">
+        <img src="/AI_Logo1.png" alt='logo' className='logo'/>
+        MINERVA AI
       </header>
       <main className="main-layout">
         <div className="left-panel">
