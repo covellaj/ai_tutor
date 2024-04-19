@@ -14,8 +14,9 @@
 }
 
 .message-area {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
-    overflow-y: auto; /* Allows scrolling within message area only */
 }
 
 .user-message {
@@ -24,16 +25,18 @@
     padding: 10px;
     margin-bottom: 10px;
     width: fit-content;
-    align-self: left;
+    align-self: flex-start;
+    text-align: left;
 }
 
 .ai-message {
-    background-color: #f0f0f0;
+    background-color: hsla(0, 0%, 94%, 0.486);
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 10px;
     width: fit-content;
-    align-self: right;
+    align-self: flex-end;
+    text-align: right;
 }
 
 .input-box {
@@ -46,8 +49,10 @@
     margin-top: auto; /* Pushes to the bottom */
     margin-bottom: 2vh;
     z-index: 2; /* Ensures it covers messages if needed */
-    background-color: white; /* Matches the chat box */
+    background-color: white;
     border: grey;
     border-radius: 10px;
     align-self: center;
+    padding: 10px;
+    font-family: "Strait", sans-serif;
 }

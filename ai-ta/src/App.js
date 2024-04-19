@@ -6,10 +6,15 @@ import './App.css';
 
 const App = () => {
   const [agentMessages, setAgentMessages] = useState([]);
+  const [systemMessages, setSystemMessage] = useState([]);
 
   const handleUpdateAgents = (message) => {
-      setAgentMessages([...agentMessages, message]);
+    setAgentMessages([...agentMessages, message]);
   };
+
+  const handleSystemMessage = (sysMessage) => {
+    setSystemMessage([...systemMessages, sysMessage]);
+  }
 
   return (
     <div className="app">
